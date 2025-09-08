@@ -26,13 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     async function sendMessageToGemini(prompt) {
-        // --- 动态 API 地址配置 ---
-        let apiUrl = 'http://localhost:3000/chat'; // 本地开发默认地址
-
-        // 如果不是在本地环境，则使用部署后的线上地址
-        if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-            // 部署完成后，您必须将下面的地址替换成您真实的【后端】URL
-            apiUrl = 'https://communicationtheory.onrender.com/chat'; // <-- ### 部署后请务必修改这里 ###
+            apiUrl = 'https://communicationtheory.onrender.com/chat'; 
         }
 
         try {
@@ -140,3 +134,4 @@ document.addEventListener('DOMContentLoaded', function() {
     activateSimulation();
 
 });
+
