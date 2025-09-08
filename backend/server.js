@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const app = express();
 // Render 会通过环境变量提供 PORT，本地开发时默认为 3000
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 // 初始化 Gemini
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
