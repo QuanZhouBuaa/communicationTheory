@@ -4,17 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>通信原理大模型 | 交互式学习平台</title>
+    
+    <!-- 引入外部资源 -->
     <link rel="stylesheet" href="style.css">
-    <!-- 引入Google字体和图标库 -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/phosphor-icons"></script>
+    
     <!-- 引入KaTeX用于渲染数学公式 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0KOVEMVIalternateQ9CFKPdsojpqG8w9MQTxImEkavKLXBIScHDcmathj" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmFAILkBCv" crossorigin="anonymous"></script>
+    
     <!-- 引入Chart.js用于图表绘制 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+
     <div class="app-container">
         <!-- ======================= -->
         <!-- |      左侧导航栏      | -->
@@ -22,7 +26,7 @@
         <nav class="sidebar">
             <div class="logo">
                 <i data-phosphor="satellite" weight="fill"></i>
-                <h1>通信原理大模型</h1>
+                <h1>通信原理</h1>
             </div>
             <ul class="nav-menu">
                 <li class="active"><a href="#"><i data-phosphor="chats-circle"></i><span>智能对话</span></a></li>
@@ -45,40 +49,18 @@
         <!-- ======================= -->
         <main class="main-content">
             <header>
-                <h2>智能对话：香农定理的推导</h2>
+                <h2>智能对话</h2>
                 <div class="header-actions">
                     <button class="icon-btn"><i data-phosphor="share-network"></i></button>
                     <button class="icon-btn"><i data-phosphor="dots-three-outline" weight="fill"></i></button>
                 </div>
             </header>
             <div class="chat-area">
-                <!-- 机器人欢迎消息 -->
+                <!-- 初始欢迎消息 -->
                 <div class="message bot">
                     <div class="avatar">AI</div>
                     <div class="message-content">
-                        <p>你好！我是通原专属大模型。今天我们来探讨什么？你可以问我任何关于通信原理的问题，例如“请推导香农公式”。</p>
-                    </div>
-                </div>
-
-                <!-- 用户消息 -->
-                <div class="message user">
-                    <div class="message-content">
-                        <p>请解释并可视化幅度调制(AM)的过程</p>
-                    </div>
-                    <div class="avatar">我</div>
-                </div>
-
-                <!-- 机器人多模态消息 -->
-                <div class="message bot">
-                    <div class="avatar">AI</div>
-                    <div class="message-content">
-                        <p>好的。幅度调制（AM）是一种将基带信号（如音频）的幅度加载到高频载波上的过程。其数学表达式为：</p>
-                        <div class="formula-block">$s(t) = [A_c + m(t)] \cos(2\pi f_c t)$</div>
-                        <p>其中 $A_c$ 是载波幅度， $f_c$ 是载波频率，$m(t)$ 是基带信号。</p>
-                        <p>为了更直观地理解，我已在右侧的**可视化工作台**为你生成了一个交互式仿真。你可以尝试调整参数，观察时域和频域波形的变化。</p>
-                        <div class="action-block">
-                           <button class="action-btn" onclick="activateSimulation()"><i data-phosphor="chart-line-up"></i> 激活AM仿真</button>
-                        </div>
+                        <p>你好！我是通原专属大模型。今天我们来探讨什么？例如，你可以问我“请推导香农公式 $C = B \log_2(1 + S/N)$”</p>
                     </div>
                 </div>
             </div>
@@ -124,6 +106,7 @@
         </aside>
     </div>
 
+    <!-- 链接到您的JS文件 -->
     <script src="script.js"></script>
 </body>
 </html>
