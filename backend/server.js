@@ -52,7 +52,7 @@ app.post('chat', async (req, res) = {
             用户问题 ${userInput}
         `;
 
-        const model = genAI.getGenerativeModel({ model gemini-pro });
+        const model = genAI.getGenerativeModel({ model gemini-2.5-pro });
         const result = await model.generateContent(systemPrompt);
         const response = await result.response;
         const text = response.text();
