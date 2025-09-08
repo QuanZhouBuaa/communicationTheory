@@ -13,9 +13,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
  --- CORS 安全配置 ---
  部署完成后，您必须将 'httpsyour-frontend-url.onrender.com' 替换成您真实的【前端】URL
 const allowedOrigins = [
-    'httplocalhost8000',
-    'http127.0.0.15500',  允许本地 VS Code Live Server
-    'httpsyour-frontend-url.onrender.com'  -- ### 部署后请务必修改这里 ###
+    'https://communicationtheory.onrender.com'  -- ### 部署后请务必修改这里 ###
 ];
 
 const corsOptions = {
