@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>通信原理大模型 | 交互式学习平台</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 引入Google字体和图标库 -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <!-- 引入KaTeX用于渲染数学公式 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <!-- 引入Chart.js用于图表绘制 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- ======================= -->
+        <!-- |      左侧导航栏      | -->
+        <!-- ======================= -->
+        <nav class="sidebar">
+            <div class="logo">
+                <i data-phosphor="satellite" weight="fill"></i>
+                <h1>通信原理大模型</h1>
+            </div>
+            <ul class="nav-menu">
+                <li class="active"><a href="#"><i data-phosphor="chats-circle"></i><span>智能对话</span></a></li>
+                <li><a href="#"><i data-phosphor="chart-line"></i><span>信号仿真</span></a></li>
+                <li><a href="#"><i data-phosphor="graph"></i><span>知识图谱</span></a></li>
+                <li><a href="#"><i data-phosphor="gear"></i><span>设置</span></a></li>
+            </ul>
+            <div class="history">
+                <h2>会话历史</h2>
+                <ul>
+                    <li><a href="#">ASK, FSK, PSK的区别</a></li>
+                    <li><a href="#">香农定理的推导</a></li>
+                    <li><a href="#">OFDM仿真参数</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- ======================= -->
+        <!-- |      主聊天界面      | -->
+        <!-- ======================= -->
+        <main class="main-content">
+            <header>
+                <h2>智能对话：香农定理的推导</h2>
+                <div class="header-actions">
+                    <button class="icon-btn"><i data-phosphor="share-network"></i></button>
+                    <button class="icon-btn"><i data-phosphor="dots-three-outline" weight="fill"></i></button>
+                </div>
+            </header>
+            <div class="chat-area">
+                <!-- 机器人欢迎消息 -->
+                <div class="message bot">
+                    <div class="avatar">AI</div>
+                    <div class="message-content">
+                        <p>你好！我是通原专属大模型。今天我们来探讨什么？你可以问我任何关于通信原理的问题，例如“请推导香农公式”。</p>
+                    </div>
+                </div>
+
+                <!-- 用户消息 -->
+                <div class="message user">
+                    <div class="message-content">
+                        <p>请解释并可视化幅度调制(AM)的过程</p>
+                    </div>
+                    <div class="avatar">我</div>
+                </div>
+
+                <!-- 机器人多模态消息 -->
+                <div class="message bot">
+                    <div class="avatar">AI</div>
+                    <div class="message-content">
+                        <p>好的。幅度调制（AM）是一种将基带信号（如音频）的幅度加载到高频载波上的过程。其数学表达式为：</p>
+                        <div class="formula-block">$s(t) = [A_c + m(t)] \cos(2\pi f_c t)$</div>
+                        <p>其中 $A_c$ 是载波幅度， $f_c$ 是载波频率，$m(t)$ 是基带信号。</p>
+                        <p>为了更直观地理解，我已在右侧的**可视化工作台**为你生成了一个交互式仿真。你可以尝试调整参数，观察时域和频域波形的变化。</p>
+                        <div class="action-block">
+                           <button class="action-btn" onclick="activateSimulation()"><i data-phosphor="chart-line-up"></i> 激活AM仿真</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input-bar">
+                <button class="icon-btn"><i data-phosphor="paperclip"></i></button>
+                <textarea placeholder="输入你的问题，Shift+Enter换行..." rows="1"></textarea>
+                <button class="send-btn"><i data-phosphor="paper-plane-right" weight="fill"></i></button>
+            </div>
+        </main>
+
+        <!-- ======================= -->
+        <!-- |    右侧可视化工作台   | -->
+        <!-- ======================= -->
+        <aside class="workbench">
+            <div class="panel" id="simulation-panel">
+                <div class="panel-header">
+                    <h3><i data-phosphor="waveform"></i> 实时可视化工作台</h3>
+                </div>
+                <div class="panel-content">
+                    <div class="chart-container">
+                        <canvas id="timeDomainChart"></canvas>
+                    </div>
+                    <div class="controls">
+                        <h4>仿真参数</h4>
+                        <div class="slider-group">
+                            <label for="carrier-freq">载波频率 (fc)</label>
+                            <input type="range" id="carrier-freq" min="10" max="100" value="50">
+                            <span id="carrier-freq-value">50 Hz</span>
+                        </div>
+                        <div class="slider-group">
+                            <label for="mod-freq">调制信号频率 (fm)</label>
+                            <input type="range" id="mod-freq" min="1" max="10" value="5">
+                            <span id="mod-freq-value">5 Hz</span>
+                        </div>
+                        <div class="slider-group">
+                            <label for="mod-index">调制指数 (m)</label>
+                            <input type="range" id="mod-index" min="0" max="2" value="0.7" step="0.1">
+                            <span id="mod-index-value">0.7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

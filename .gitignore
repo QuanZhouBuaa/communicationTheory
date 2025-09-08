@@ -1,0 +1,9 @@
+# .gitignore
+
+# 忽略后端的依赖文件夹和环境变量文件
+/backend/node_modules
+/backend/.env
+
+# 忽略常见的操作系统文件
+.DS_Store
+Thumbs.db
