@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     async function sendMessageToGemini(prompt) {
-            apiUrl = 'https://communicationtheory.onrender.com/chat'; 
+            apiUrl = 'https://communicationclass.onrender.com/chat'; 
         }
 
         try {
@@ -134,4 +134,5 @@ document.addEventListener('DOMContentLoaded', function() {
     activateSimulation();
 
 });
+
 
