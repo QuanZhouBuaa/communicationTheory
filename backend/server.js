@@ -4,14 +4,14 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
- Render 会通过环境变量提供 PORT，本地开发时默认为 3000
+ //Render 会通过环境变量提供 PORT，本地开发时默认为 3000
 const port = process.env.PORT  3000;
 
- 初始化 Gemini
+ //初始化 Gemini
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
- --- CORS 安全配置 ---
- 部署完成后，您必须将 'httpsyour-frontend-url.onrender.com' 替换成您真实的【前端】URL
+ //--- CORS 安全配置 ---
+ //部署完成后，您必须将 'httpsyour-frontend-url.onrender.com' 替换成您真实的【前端】URL
 const allowedOrigins = [
     'https://communicationtheory.onrender.com'  -- ### 部署后请务必修改这里 ###
 ];
@@ -29,7 +29,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
- API 路由
+ //API 路由
 app.post('chat', async (req, res) = {
     try {
         const userInput = req.body.prompt;
@@ -63,7 +63,7 @@ app.post('chat', async (req, res) = {
     }
 });
 
- 启动服务器
+ //启动服务器
 app.listen(port, () = {
     console.log(`✅ Server is running on port ${port}`);
 });
