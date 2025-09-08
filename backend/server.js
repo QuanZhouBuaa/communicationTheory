@@ -12,9 +12,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 // --- CORS 安全配置 ---
 const allowedOrigins = [
-    'http://localhost:8000',
-    'http://127.0.0.1:5500',
-    'https://communicationtheory.onrender.com' // 您的前端URL
+    'https://communicationtheory.onrender.com'
 ];
 
 const corsOptions = {
